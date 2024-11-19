@@ -3,6 +3,8 @@ import '../Components/MyButton.dart';
 import '../Components/MyTextField.dart';
 import '../Pages/home_page.dart';
 
+import '../Components/MyDropdownTextfield.dart';
+
 class RegistrationPage extends StatefulWidget {
   RegistrationPage ({Key? key}) : super(key: key);
 
@@ -210,9 +212,12 @@ Widget build(BuildContext context) {
                         height: 50,
                         color: Color(0xFFAAFF00),
                         btnHint: 'Register')
+
                   ],
                 ),
               ),
+
+
             ],
           ),
         ),
