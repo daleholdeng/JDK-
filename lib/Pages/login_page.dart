@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:jdk_tracker/Pages/view_page.dart';
 import '../Components/MyButton.dart';
 import '../Components/MyTextField.dart';
+import '../conn.dart';
 
 
 class LoginPage extends StatefulWidget {
@@ -90,6 +91,14 @@ class _LoginPageState extends State<LoginPage> {
 
                           Navigator.push(context,
                               MaterialPageRoute(builder: (context) => ViewPage()));
+                        onTap: () async {
+                              if(emailController.text.isNotEmpty && passwordController.text.isNotEmpty){
+                                if (await LoginService.loginBtn(emailController.text, passwordController.text)){
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(content: Text('Login  successful!')),
+                                  );
+                          }
+                              }
                         },
                         width: 320,
                         height: 50,

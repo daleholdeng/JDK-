@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../Pages/registration_page.dart';
 import '../Components/MyButton.dart';
 import 'generateqr_page.dart';
+import '../Database/database_service.dart';
 import 'login_page.dart';
 
 class HomePage extends StatefulWidget {
@@ -12,6 +13,8 @@ class HomePage extends StatefulWidget {
 }
 
 class HomePageState extends State<HomePage> {
+
+  final DatabaseService _databaseService = DatabaseService.instance;
 
   // gradient for text
   final gradient = LinearGradient(
@@ -108,6 +111,9 @@ class HomePageState extends State<HomePage> {
                           onTap: (){
                             /*Navigator.push(context,
                                 MaterialPageRoute(builder: (context) => QRscanPage()));*/
+                            //login
+                            Navigator.push(context,
+                                MaterialPageRoute(builder: (context) => LoginPage()));
                           },
                           color: Colors.white,
                           width: 300,
