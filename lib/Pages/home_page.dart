@@ -86,8 +86,8 @@ class HomePageState extends State<HomePage> {
                     children: [
                       MyButton(
                           onTap: (){
-                            Navigator.push(context,
-                                MaterialPageRoute(builder: (context) => QRGeneratorPage()));
+                            /*Navigator.push(context,
+                                MaterialPageRoute(builder: (context) => QRGeneratorPage()));*/
                           },
                           color: Colors.white,
                           width: 300,
