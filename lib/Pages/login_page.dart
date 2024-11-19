@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../Components/MyButton.dart';
 import '../Components/MyTextField.dart';
+import '../conn.dart';
 
 
 class LoginPage extends StatefulWidget {
@@ -82,8 +83,14 @@ class _LoginPageState extends State<LoginPage> {
                     const SizedBox(height: 40,),
                     MyButton(
                         color: Color(0xff009fe0),
-                        onTap: (){
-
+                        onTap: () async {
+                              if(emailController.text.isNotEmpty && passwordController.text.isNotEmpty){
+                                if (await LoginService.loginBtn(emailController.text, passwordController.text)){
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(content: Text('Login  successful!')),
+                                  );
+                          }
+                              }
                         },
                         width: 320,
                         height: 50,
