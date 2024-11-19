@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../Components/MyButton.dart';
+import '../Database/database_service.dart';
 import 'login_page.dart';
 
 class HomePage extends StatefulWidget {
@@ -11,6 +12,8 @@ class HomePage extends StatefulWidget {
 }
 
 class HomePageState extends State<HomePage> {
+
+  final DatabaseService _databaseService = DatabaseService.instance;
 
   // gradient for text
   final gradient = LinearGradient(
