@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import '../Pages/registration_page.dart';
 import '../Components/MyButton.dart';
 
 class HomePage extends StatefulWidget {
@@ -69,8 +69,8 @@ class HomePageState extends State<HomePage> {
                     children: [
                       MyButton(
                           onTap: (){
-                            /*Navigator.push(context,
-                                MaterialPageRoute(builder: (context) => RegistrationPage()));*/
+                            Navigator.push(context,
+                                MaterialPageRoute(builder: (context) => RegistrationPage()));
                           },
                           color: Colors.white,
                           width: 300,
