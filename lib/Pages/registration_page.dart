@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:jdk_tracker/Database/database_service.dart';
 import '../Components/MyButton.dart';
 import '../Components/MyTextField.dart';
 import '../Pages/home_page.dart';
 
 import '../Components/MyDropdownTextfield.dart';
+import '../models/task.dart';
 
 class RegistrationPage extends StatefulWidget {
   RegistrationPage ({Key? key}) : super(key: key);
@@ -13,7 +15,7 @@ class RegistrationPage extends StatefulWidget {
 }
 
 class _RegistrationPageState extends State<RegistrationPage> {
-
+  final DatabaseService _databaseService = DatabaseService.instance;
   List<String> items = ['Trainee', 'Manager'];
   final nameController = TextEditingController();
   final emailController = TextEditingController();
@@ -33,6 +35,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
 
 @override
 Widget build(BuildContext context) {
+
   return SafeArea(
     child: Scaffold(
       backgroundColor: Colors.transparent,
@@ -55,7 +58,8 @@ Widget build(BuildContext context) {
         ),
         centerTitle: true,
       ),
-      body: Padding(
+      body:
+      Padding(
         padding: const EdgeInsets.all(0.0),
         child: Container(
           decoration: BoxDecoration(
@@ -202,6 +206,7 @@ Widget build(BuildContext context) {
                   children: [
                     MyButton(
                     onTap: (){
+                        _databaseService.register(nameController.text,emailController.text,passController.text,managerController.text,deptController.text);
                       ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(content: Text('Registration Success!!'))
                       );
@@ -225,4 +230,36 @@ Widget build(BuildContext context) {
     ),
   );
 }
+  Widget _taskList() {
+    return FutureBuilder<List<Task>>(
+      future: _databaseService.getTask(), // Ensure this fetches a List<Task>
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return Center(child: CircularProgressIndicator());
+        } else if (snapshot.hasError) {
+          return Center(child: Text('Error: ${snapshot.error}'));
+        } else if (snapshot.hasData && snapshot.data != null) {
+          final tasks = snapshot.data!;
+          if (tasks.isEmpty) {
+            return Center(child: Text('No tasks found.'));
+          }
+          return ListView.builder(
+            itemCount: tasks.length,
+            itemBuilder: (context, index) {
+              final task = tasks[index];
+              return ListTile(
+                title: Text(task.fn), // Display the full name (fn field)
+                subtitle: Text(
+                  'Email: ${task.email}\nDept: ${task.dept}', // Additional details
+                ),
+                isThreeLine: true,
+              );
+            },
+          );
+        } else {
+          return Center(child: Text('No tasks available.'));
+        }
+      },
+    );
+  }
 }
