@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../Components/MyButton.dart';
+import 'login_page.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key? key}) : super(key: key);
@@ -104,8 +105,9 @@ class HomePageState extends State<HomePage> {
                     children: [
                       MyButton(
                           onTap: (){
-                            /*Navigator.push(context,
-                                MaterialPageRoute(builder: (context) => LoginPage()));*/
+                            //login
+                            Navigator.push(context,
+                                MaterialPageRoute(builder: (context) => LoginPage()));
                           },
                           color: Colors.white,
                           width: 300,
@@ -122,8 +124,8 @@ class HomePageState extends State<HomePage> {
                     children: [
                       MyButton(
                           onTap: (){
-                            /*Navigator.push(context,
-                                MaterialPageRoute(builder: (context) => LoginPage()));*/
+                            Navigator.push(context,
+                                MaterialPageRoute(builder: (context) => LoginPage()));
                           },
                           color: Colors.white,
                           width: 300,
