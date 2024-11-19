@@ -37,6 +37,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
   qr_flutter: ^4.1.0
+  #qr_code_scanner: ^1.0.1
   mysql_client: ^0.0.27
   mysql1: ^0.20.0
   http: ^1.2.0

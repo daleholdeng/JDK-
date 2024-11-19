@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jdk_tracker/Pages/view_page.dart';
 import '../Components/MyButton.dart';
 import '../Components/MyTextField.dart';
 import '../conn.dart';
@@ -83,6 +84,13 @@ class _LoginPageState extends State<LoginPage> {
                     const SizedBox(height: 40,),
                     MyButton(
                         color: Color(0xff009fe0),
+                        onTap: (){
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: Text('Logout Successful!')),
+                          );
+
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (context) => ViewPage()));
                         onTap: () async {
                               if(emailController.text.isNotEmpty && passwordController.text.isNotEmpty){
                                 if (await LoginService.loginBtn(emailController.text, passwordController.text)){

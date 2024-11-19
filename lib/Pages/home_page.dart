@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-
+import '../Pages/registration_page.dart';
 import '../Components/MyButton.dart';
+import 'generateqr_page.dart';
 import '../Database/database_service.dart';
 import 'login_page.dart';
 
@@ -73,8 +74,8 @@ class HomePageState extends State<HomePage> {
                     children: [
                       MyButton(
                           onTap: (){
-                            /*Navigator.push(context,
-                                MaterialPageRoute(builder: (context) => RegistrationPage()));*/
+                            Navigator.push(context,
+                                MaterialPageRoute(builder: (context) => RegistrationPage()));
                           },
                           color: Colors.white,
                           width: 300,
@@ -90,8 +91,8 @@ class HomePageState extends State<HomePage> {
                     children: [
                       MyButton(
                           onTap: (){
-                            /*Navigator.push(context,
-                                MaterialPageRoute(builder: (context) => QRGeneratorPage()));*/
+                            Navigator.push(context,
+                                MaterialPageRoute(builder: (context) => QRGeneratorPage()));
                           },
                           color: Colors.white,
                           width: 300,
@@ -108,6 +109,8 @@ class HomePageState extends State<HomePage> {
                     children: [
                       MyButton(
                           onTap: (){
+                            /*Navigator.push(context,
+                                MaterialPageRoute(builder: (context) => QRscanPage()));*/
                             //login
                             Navigator.push(context,
                                 MaterialPageRoute(builder: (context) => LoginPage()));
