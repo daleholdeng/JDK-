@@ -4,7 +4,6 @@ import '../Components/MyButton.dart';
 import '../Components/MyTextField.dart';
 import '../conn.dart';
 
-
 class LoginPage extends StatefulWidget {
   LoginPage({super.key});
   @override
@@ -12,15 +11,13 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final FocusNode focus1 = FocusNode();
   final FocusNode focus2 = FocusNode();
 
-
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.transparent,
@@ -33,34 +30,35 @@ class _LoginPageState extends State<LoginPage> {
                 Color(0xffFFFFFF),
                 Color(0xff009fe0),
                 Color(0xff0051a0),
-
-
               ],
             ),
           ),
-
           child: SafeArea(
             child: Center(
               child: SingleChildScrollView(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const SizedBox(height: 5,),
+                    const SizedBox(height: 5),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                      child: Image.asset('assets/Logo.png', width: 150, height: 150,),
-                    ),
-                    const SizedBox(height: 10,),
-                    Text('Launchpad Timesheet Tracker',
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black,
-                          fontSize: 28,
-                          fontFamily: 'Poppins'
+                      child: Image.asset(
+                        'assets/Logo.png',
+                        width: 150,
+                        height: 150,
                       ),
                     ),
-
-                    const SizedBox(height: 30,),
+                    const SizedBox(height: 10),
+                    Text(
+                      'Launchpad Timesheet Tracker',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black,
+                        fontSize: 28,
+                        fontFamily: 'Poppins',
+                      ),
+                    ),
+                    const SizedBox(height: 30),
                     // Email TextField
                     MyTextField(
                       focusNode: focus1,
@@ -68,10 +66,8 @@ class _LoginPageState extends State<LoginPage> {
                       hintText: 'Email',
                       textfieldIcon: Icons.email,
                       obscureText: false,
-
                     ),
-
-                    const SizedBox(height: 20,),
+                    const SizedBox(height: 20),
                     // Password Text Field
                     MyTextField(
                       focusNode: focus2,
@@ -80,37 +76,41 @@ class _LoginPageState extends State<LoginPage> {
                       textfieldIcon: Icons.password,
                       obscureText: true,
                     ),
-
-                    const SizedBox(height: 40,),
+                    const SizedBox(height: 40),
                     MyButton(
-                        color: Color(0xff009fe0),
-                        onTap: (){
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(content: Text('Logout Successful!')),
-                          );
-
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (context) => ViewPage()));
-                        onTap: () async {
-                              if(emailController.text.isNotEmpty && passwordController.text.isNotEmpty){
-                                if (await LoginService.loginBtn(emailController.text, passwordController.text)){
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    SnackBar(content: Text('Login  successful!')),
-                                  );
+                      color: Color(0xff009fe0),
+                      onTap: () async {
+                        if (emailController.text.isNotEmpty &&
+                            passwordController.text.isNotEmpty) {
+                          bool isLoginSuccessful = await LoginService
+                              .loginBtn(emailController.text, passwordController.text);
+                          if (isLoginSuccessful) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(content: Text('Login successful!')),
+                            );
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => ViewPage()),
+                            );
+                          } else {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(content: Text('Login failed. Please try again.')),
+                            );
                           }
-                              }
-                        },
-                        width: 320,
+                        } else {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: Text('Please enter email and password.')),
+                          );
+                        }
+                      }, width: 320,
                         height: 50,
-                        btnHint: 'Login')
-
-
+                        btnHint: 'Login',
+                    ),
                   ],
                 ),
               ),
             ),
           ),
-
         ),
       ),
     );
