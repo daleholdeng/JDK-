@@ -11,7 +11,7 @@ class QRGeneratorPage extends StatefulWidget {
 
 class _QRGeneratorPageState extends State<QRGeneratorPage> {
   final GlobalKey globalKey = GlobalKey();
-  String qrData = "Dale Holden Garcia";
+  String qrData = "";
 
   @override
   Widget build(BuildContext context) {
