@@ -5,16 +5,28 @@ class MyRecordContainer extends StatelessWidget {
   final String hours;
 
 
+  final Function()? onTap;
+
+
+
   const MyRecordContainer({
     super.key,
     required this.name,
+
+
+    required this.onTap,
+
     required this.hours});
 
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
     return GestureDetector(
+
       onTap: (){},
+
+      onTap: onTap,
+
       child: Container(
         width: 325,
         height: 60,

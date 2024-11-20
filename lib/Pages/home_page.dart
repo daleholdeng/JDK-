@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
 import '../Pages/registration_page.dart';
 import '../Components/MyButton.dart';
+
 import 'generateqr_page.dart';
 import '../Database/database_service.dart';
 import 'login_page.dart';
+
+import 'GenerateQR.dart';
+import 'LoginPage.dart';
+import 'RegisterPage.dart';
+
 
 class HomePage extends StatefulWidget {
   HomePage({Key? key}) : super(key: key);
