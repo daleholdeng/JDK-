@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
 import '../Components/MyButton.dart';
+import 'GenerateQR.dart';
+import 'LoginPage.dart';
+import 'RegisterPage.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key? key}) : super(key: key);
@@ -69,8 +72,8 @@ class HomePageState extends State<HomePage> {
                     children: [
                       MyButton(
                           onTap: (){
-                            /*Navigator.push(context,
-                                MaterialPageRoute(builder: (context) => RegistrationPage()));*/
+                            Navigator.push(context,
+                                MaterialPageRoute(builder: (context) => RegistrationPage()));
                           },
                           color: Colors.white,
                           width: 300,
@@ -86,8 +89,8 @@ class HomePageState extends State<HomePage> {
                     children: [
                       MyButton(
                           onTap: (){
-                            /*Navigator.push(context,
-                                MaterialPageRoute(builder: (context) => QRGeneratorPage()));*/
+                            Navigator.push(context,
+                                MaterialPageRoute(builder: (context) => QRGeneratorPage()));
                           },
                           color: Colors.white,
                           width: 300,
@@ -122,8 +125,8 @@ class HomePageState extends State<HomePage> {
                     children: [
                       MyButton(
                           onTap: (){
-                            /*Navigator.push(context,
-                                MaterialPageRoute(builder: (context) => LoginPage()));*/
+                            Navigator.push(context,
+                                MaterialPageRoute(builder: (context) => LoginPage()));
                           },
                           color: Colors.white,
                           width: 300,
